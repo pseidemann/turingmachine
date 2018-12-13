@@ -73,7 +73,7 @@ func (m *Machine) GetConfiguration() string {
 		"state:%s head:%s tape:%s",
 		m.state,
 		string(m.tape.GetHead()),
-		m.tape.GetContent(),
+		m.tape.GetContentWithHead(),
 	)
 }
 

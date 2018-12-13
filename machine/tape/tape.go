@@ -47,7 +47,17 @@ func (t *Tape) SetHead(sym rune) {
 
 // GetContent returns the tape content with leading and trailing blank symbols removed.
 func (t *Tape) GetContent() string {
-	result := string(t.head.value)
+	return t.getContent("", "")
+}
+
+// GetContentWithHead returns the tape content, showing the head position, with
+// leading and trailing blank symbols removed.
+func (t *Tape) GetContentWithHead() string {
+	return t.getContent("[", "]")
+}
+
+func (t *Tape) getContent(beforeHead, afterHead string) string {
+	result := beforeHead + string(t.head.value) + afterHead
 	for before := t.head.before; before != nil; before = before.before {
 		result = string(before.value) + result
 	}
